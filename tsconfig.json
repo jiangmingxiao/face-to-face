@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "es5",
+        "sourceMap": false,
+        "emitDecoratorMetadata": false,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "removeComments": false,
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "jsx": "react",
+        "outDir": "dist",
+        "lib": ["dom", "es5", "scripthost", "es6"]
+    },
+    "exclude": [
+        "node_modules",
+        "webpack",
+        "server.js",
+        "app",
+        "dist"
+    ]
+}
