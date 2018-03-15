@@ -1,8 +1,31 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
+const url = "//imgforjiangmx.oss-cn-beijing.aliyuncs.com";
 class App extends React.PureComponent<any, any> {
+    onChange(e) {
+        const file = e.target.files[0];
+        var reader = new FileReader();
+         // 以DataURL的形式读取文件:
+        //reader.readAsDataURL(file);
+        reader.readAsArrayBuffer(file);
+        reader.onload = function(e) {
+            axios.put(url, this.result,{
+                headers: {
+                    'content-type': 'application/json'
+                },
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        　       
+       }; 
+    }
     render() {
         return(
             <Router>
@@ -12,7 +35,7 @@ class App extends React.PureComponent<any, any> {
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/topics">Topics</Link></li>
                 </ul>
-
+                <input type="file" onChange={this.onChange} />
                 <hr/>
 
                 <Route exact path="/" component={Home}/>
