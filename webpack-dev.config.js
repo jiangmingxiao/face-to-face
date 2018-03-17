@@ -15,6 +15,21 @@ module.exports = {
             {
                 test: /\.tsx$/,
                 loader: 'ts-loader'
+            },
+            {
+                test: /\.scss$/,
+                use:[
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader', options: {
+                          sourceMap: true, modules: true,
+                          localIdentName: '[local]'
+                        }
+                    },
+                    {
+                        loader: 'sass-loader', options: { sourceMap: true }
+                    }
+                ]
             }
         ]
     },

@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import axios from 'axios';
 import pasition from 'pasition';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {BeatingHeart} from './components/canvas';
+import './index.scss';
 const url = "//imgforjiangmx.oss-cn-beijing.aliyuncs.com";
 class App extends React.PureComponent<any, any> {
     constructor(props){
@@ -31,9 +32,14 @@ class App extends React.PureComponent<any, any> {
     }
 }
 const Home = () => (
-<div>
+<div className="test">
+    <BeatingHeart/>
+</div>
+)
 
-    <svg xmlns="http://www.w3.org/2000/svg" style={{width:'1000px',height:'1000px'}}>
+const About = () => (
+<div>
+<svg xmlns="http://www.w3.org/2000/svg" style={{width:'1000px',height:'1000px'}}>
 		{/* 圆<path id="pathA" d="M280,250A200,200,0,1,1,680,250A200,200,0,1,1,280,250Z"></path> */}
 		{/* 星星<path id="pathF" d="M480,50L423.8,182.6L280,194.8L389.2,289.4L356.4,430L480,355.4L480,355.4L603.6,430L570.8,289.4L680,194.8L536.2,182.6Z"></path> */}
 
@@ -50,11 +56,6 @@ const Home = () => (
     <animateTransform attributeName="transform" begin="0s" dur="10s" type="rotate" from="0 160 160" to="360 160 160" repeatCount="indefinite"/>
   </g>
 </svg>
-</div>
-)
-
-const About = () => (
-<div>
     <h2>About</h2>
 </div>
 )
