@@ -5,6 +5,7 @@ import pasition from 'pasition';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {BeatingHeart} from './components/canvas';
 import './index.scss';
+import WaterFall from './components/waterfall';
 const url = "//imgforjiangmx.oss-cn-beijing.aliyuncs.com";
 class App extends React.PureComponent<any, any> {
     constructor(props){
@@ -33,7 +34,7 @@ class App extends React.PureComponent<any, any> {
 }
 const Home = () => (
 <div className="test">
-    <BeatingHeart/>
+    <WaterFall/>
 </div>
 )
 
