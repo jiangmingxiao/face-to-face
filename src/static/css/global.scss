@@ -1,0 +1,22 @@
+@import '../font/PT-Mono.scss';
+
+$bg: #E6E5D3;
+$itemBg1: #720026;
+$itemBg2: #CE4257;
+$itemBg3: #FFC093;
+$itemBg4: #FF7F51;
+$counterBg: #222;
+
+body,
+html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: $bg;
+  font-family: "PT Mono", monospace;
+  margin: 0;
+}
+ul {
+    list-style: none;
+    margin: 0;
+}

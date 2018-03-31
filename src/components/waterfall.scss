@@ -1,27 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Mono');
 
-$bg: #4F000B;
-$itemBg1: #720026;
-$itemBg2: #CE4257;
-$itemBg3: #FFC093;
+
+$itemBg1: #14DAC9;
+$itemBg2: #1BB2DC;
+$itemBg3: #36D753;
 $itemBg4: #FF7F51;
 $counterBg: #222;
 
 @mixin setColorAndHover($baseColor) {
-  color: $baseColor;
+  background-color: $baseColor;
   &:hover {
     background: lighten($baseColor, 8%);
   }
 }
 
-body,
-html {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: $bg;
-  font-family: "PT Mono", monospace;
-}
 
 .masonry {
   column-count: 1;
@@ -59,55 +51,67 @@ html {
     align-items: center;
     height: 220px;
     font-size: 40px;
-    color: darken($bg, 5%);
+    color: black;
     background: currentColor;
     box-sizing: border-box;
     @include setColorAndHover($itemBg1);
     
-    &:before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      font-size: 13px;
-      width: 2em;
-      height: 2em;
-      line-height: 2em;
-      text-align: center;
-      font-weight: bold;
-      background-color: $counterBg;
-      content: counter(item-counter);
-    }
+    // &:before {
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   font-size: 13px;
+    //   width: 2em;
+    //   height: 2em;
+    //   line-height: 2em;
+    //   text-align: center;
+    //   font-weight: bold;
+    //   background-color: $counterBg;
+    //   content: counter(item-counter);
+    // }
     
-    &:after {
-      color: darken($bg, 10%);
-      content: 'ಠ‿ಠ';
-    }
+    // &:after {
+      
+    //   content: 'ಠ‿ಠ';
+    // }
     
+    .heart-content{
+      visibility: hidden;
+      opacity: 0;  
+      transition: all 2s;
+    }
+    &:hover {
+      .heart-content{
+        opacity: 1;  
+        visibility: visible 
+      }
+    }
+
     &--small {
       @include setColorAndHover($itemBg2);
       height: 100px;
       
-      &:after {
-        content: '♥◡♥';
-      }
+      // &:after {
+      //   content: '♥◡♥';
+      // }
     }
     
     &--medium {
       @include setColorAndHover($itemBg3);
       height: 175px;
       
-      &:after {
-        content: '◔ᴗ◔';
-      }
+      // &:after {
+      //   content: '◔ᴗ◔';
+      // }
     }
     
     &--large {
       @include setColorAndHover($itemBg4);
       height: 280px;
       
-      &:after {
-        content: 'ಠ_๏';
-      }
+      // &:after {
+      //   content: 'ಠ_๏';
+      // }
     }
   }
 }

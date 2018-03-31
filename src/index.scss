@@ -1,3 +1,27 @@
-.test{
-    
+@import './static/css/global.scss';
+
+.app-page {
+    .global-nav{
+        .router-ul{
+            background-color: black;
+            width: 100%;
+            opacity: 0.6;
+            position: fixed;
+            z-index: 9999;
+            font-size: 17px;
+            height: 48px;
+            line-height: 48px;
+            li{
+                display: inline-block;
+                position: relative;
+                
+                z-index: 1;
+                vertical-align: top;
+                padding: 0 10px;
+            }
+        }
+    }
+    .global-section{
+        padding-top:65px;
+    }
 }

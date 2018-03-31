@@ -9,6 +9,7 @@ module.exports = {
         filename: '[name]-[hash:6].js',
         chunkFilename: '[name]-[hash:6].js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/foo-app/'
     },
     module: {
         rules: [
@@ -35,6 +36,9 @@ module.exports = {
     },
     devServer: {
         hot: true,
+        historyApiFallback:{
+            index:'/foo-app/'
+        },
     },
     devtool: 'source-map',
     plugins: [

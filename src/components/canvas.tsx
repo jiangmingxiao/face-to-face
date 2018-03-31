@@ -6,6 +6,8 @@ interface IPercentCircle {
 interface IBeatgingHeart{
     base?: number,//心的大小,
     color?: string//心的填充色
+    onClick?: Function//点击事件
+    className?: string
 }
 
 class PercentCircle extends React.PureComponent<IPercentCircle, any> {
@@ -49,7 +51,9 @@ class BeatingHeart extends React.PureComponent<IBeatgingHeart, any> {
     static defaultProps = {
         base:　0.2
     }
-
+    constructor(props, context) {
+        super(props, context);
+    }
     componentDidMount() {
         this.ctx = this.canvas.getContext("2d");
         this.ctx.translate(100, 100);
@@ -117,10 +121,15 @@ class BeatingHeart extends React.PureComponent<IBeatgingHeart, any> {
     render() {
         return(
             <canvas
+                className={this.props.className}
                 ref={(ref)=>{this.canvas=ref}} 
                 width={200} 
                 height={200} 
-                style={{zoom:this.props.base}}
+                style={{
+                    zoom:this.props.base,
+                    cursor:'pointer'
+                }}
+                onClick={()=>{this.props.onClick && this.props.onClick()}}
             />
         )
     }

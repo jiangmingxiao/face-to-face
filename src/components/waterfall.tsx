@@ -1,84 +1,65 @@
 import * as React from 'react';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
 import './waterfall.scss';
 import {getRandom} from '../utils/math';
+import WaterBox from './waterbox';
 
+@observer
 export default  class WaterFall extends React.Component<any,any> {
-    private data;
+  
+    private data = observable([]) as any;
+    private n = 0;
     constructor(props,context) {
         super(props, context);
-        this.data=[
-            {
-              size:"big"
-            },
-            {
-              size:"normal"
-            },
-            {
-              size:"small"
-            },
-            {
-              size:"big"
-            },
-            {
-              size:"big"
-            },
-            {
-              size:"big"
-            },
-            {
-              size:"big"
-            },
-        ]
+        this.push();
+        window.onscroll= ()=>{
+          const scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+          const srollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+          const innerHeight = window.innerHeight;
+          const currentHeight = scrollTop + innerHeight;
+          if( currentHeight > srollHeight * 0.9 && currentHeight <= srollHeight * 1) {
+            this.push();
+          }
+        }
     }
     push(){
       const array = [
-        {},
         {
-          size: "small"
+          content:"123"
+        },
+        {
+          size: "small",
+          content:"456"
         },{
-          size: "noraml"
+          size: "medium",
+          content:"789"
         },{
-          size: "big"
+          size: "large",
+          content:"big"
         }
       ];
-      for(let i=0;i<100;i++) {
+      const newArray = [];
+      for(let i=0;i<20;i++) {
         const n = getRandom(0,3);
-        this.data.push(array[n])
+        newArray.push(array[n])
       }
+      this.data[this.n++] = newArray;
+      
     }
     render() {
-      let divs = []
-      this.data.map((item)=>{
-        switch(item.size){
-          case "small":
-            divs.push(<div className="item">
-                        <div className="item__content item__content--small">
-                        </div>
-                      </div>)
-            break;
-          case "normal":
-            divs.push(<div className="item">
-                        <div className="item__content item__content--medium">
-                        </div>
-                      </div>)
-            break;
-          case "big":
-            divs.push(<div className="item">
-                        <div className="item__content item__content--large">
-                        </div>
-                      </div>)
-            break;
-          default:
-            divs.push(<div className="item">
-                        <div className="item__content item__content">
-                        </div>
-                      </div>)
-            break;
+      return(<div>
+        {
+          this.data.map((item, index)=>{
+            return(
+              <WaterBox
+                data={item}
+                key={index}
+              />
+            )
+          })
         }
-      })
-        return(<div className="masonry">
-        <button onClick={this.push}/>
-                {divs}
-              </div>)
+        
+      </div>)
     }
 }
