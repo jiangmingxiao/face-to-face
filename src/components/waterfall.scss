@@ -78,7 +78,7 @@ $counterBg: #222;
     .heart-content{
       visibility: hidden;
       opacity: 0;  
-      transition: all 2s;
+      transition: visibility,opacity 2s;
     }
     &:hover {
       .heart-content{

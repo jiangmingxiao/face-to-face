@@ -9,12 +9,12 @@ module.exports = {
         filename: '[name]-[hash:6].js',
         chunkFilename: '[name]-[hash:6].js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/foo-app/'
+        publicPath: '/'
     },
     module: {
         rules: [
             {
-                test: /\.tsx$/,
+                test: /\.(tsx|ts)?$/,
                 loader: 'ts-loader'
             },
             {
@@ -37,7 +37,7 @@ module.exports = {
     devServer: {
         hot: true,
         historyApiFallback:{
-            index:'/foo-app/'
+            index:'/'
         },
     },
     devtool: 'source-map',
